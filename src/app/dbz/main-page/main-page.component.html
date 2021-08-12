@@ -2,16 +2,12 @@
 <hr>
 <div class="row">
     <div class="col">
-        <app-characters></app-characters>
+        <app-characters [data]="characters"></app-characters>
     </div>
     <div class="col">
-        <h3>Add</h3>
-        <hr>
-
-        <form (ngSubmit)="add()">
-            <input type="text" name="name" [(ngModel)]="character.name" placeholder="Names Character">
-            <input type="number" name="power" [(ngModel)]="character.power" placeholder="Power">
-            <button type="submit">Add</button>
-        </form>
+        <app-add 
+            [newCharacter]="character"
+            (onNewCharacter)="addNewCharacter($event)"
+        ></app-add>
     </div>
 </div>

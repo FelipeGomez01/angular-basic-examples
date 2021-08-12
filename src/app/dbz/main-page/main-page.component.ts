@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Character } from '../interfaces/dbz.interface';
 
-interface Character
-{
-  name:string;
-  power:number;
-}
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
@@ -29,13 +25,9 @@ export class MainPageComponent
     power: 0,
   };
 
-  add()
+  addNewCharacter(value: Character)
   {
-    if(this.character.name.trim().length == 0)
-    {
-      return;
-    }
-    this.characters.push(this.character);
-    this.character = {name: "", power: 0};
+    this.characters.push(value);
+    console.log(value);
   }
 }
