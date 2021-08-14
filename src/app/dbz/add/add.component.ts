@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Character } from '../interfaces/dbz.interface';
+import { DbzServices } from '../services/dbz.services';
 
 @Component({
   selector: 'app-add',
@@ -15,10 +16,11 @@ export class AddComponent implements OnInit
     power: 0,
   };
 
-  @Output()
-  onNewCharacter: EventEmitter<Character> = new EventEmitter();
+  /*@Output()
+  onNewCharacter: EventEmitter<Character> = new EventEmitter();*/
 
-  constructor() { }
+  constructor(private dbzService: DbzServices)
+  {}
 
   ngOnInit(): void {
   }
@@ -30,7 +32,9 @@ export class AddComponent implements OnInit
       return;
     }
 
-    this.onNewCharacter.emit(this.character);
+    this.dbzService.addCharacters(this.character);
+
+    //this.onNewCharacter.emit(this.character);
     this.character = {name: "", power: 0};
   }
 

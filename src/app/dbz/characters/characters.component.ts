@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Character } from '../interfaces/dbz.interface';
+import { DbzServices } from '../services/dbz.services';
 
 @Component({
   selector: 'app-characters',
@@ -7,10 +8,15 @@ import { Character } from '../interfaces/dbz.interface';
 })
 export class CharactersComponent implements OnInit {
 
-  @Input('data')
-  characters: Character[] = [];
+  /*@Input('data')
+  characters: Character[] = [];*/
 
-  constructor() { }
+  get characters ()
+  {
+    return this.dbzServices.characters;
+  }
+
+  constructor(private dbzServices: DbzServices) { }
 
   ngOnInit(): void {
   }
